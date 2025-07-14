@@ -1,0 +1,43 @@
+<body style="background-image: url('https://cdn.discordapp.com/attachments/706393237077622844/1394442992084844574/image.png?ex=6876d3bc&is=6875823c&hm=f3cd8739d00d6fcf0c82a0e372081557bd0d34e63e979a5a0b1f7d90d7ac07ca&'); background-size: cover; background-position: center; margin: 0;">
+  <div style="height: 95vh; display: flex; flex-direction: column; align-items: center; padding-top: 40px;">
+    <form id="infoForm" style="text-align: center;">
+      <label for="name" style="font-size: 1.5rem;">الاسم:</label>
+      <input type="text" id="name" name="name" required style="font-size: 1.5rem;">
+      <br><br>
+      <label for="code" style="font-size: 1.5rem;">الكود:</label>
+      <input type="text" id="code" name="code" required style="font-size: 1.5rem;">
+      <br><br>
+      <label for="location" style="font-size: 1.5rem;">التوجيه:</label>
+      <select id="location" name="location" required style="font-size: 1.5rem;">
+      <option value="لوس">لوس</option>
+      <option value="ساندي">ساندي</option>
+      <option value="بوليتو">بوليتو</option>
+      <option value="الجزيرة">الجزيرة</option>
+      <option value="الموجه الميداني">الموجه الميداني</option>
+      <option value="نائب الموجه الميداني">نائب الموجه الميداني</option>
+      <option value="مركز الاتصالات">مركز الاتصالات</option>
+      <option value="فني ميناء">فني ميناء</option>
+      <option value="مسؤول خدمات الطرق">مسؤول خدمات الطرق</option>
+      <option value="فني مركز تحكم">فني مركز تحكم</option>
+      <option value="خدمات الطرق">خدمات الطرق</option>
+    </select>
+    <br><br>
+    <button type="submit" style="font-size: 1.5rem;">عرض النتيجة</button>
+  </form>
+  <div id="result" style="margin-top: 2rem; text-align: center; font-size: 2rem; font-weight: bold;"></div>
+</div>
+<script>
+  document.getElementById('infoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const code = document.getElementById('code').value;
+    const location = document.getElementById('location').value;
+    let resultText;
+    if (location === "فني ميناء") {
+      resultText = `[G-${code}] ${location}`;
+    } else {
+      resultText = `${name} [G-${code}] ${location}`;
+    }
+    document.getElementById('result').innerText = resultText;
+  });
+</script>
